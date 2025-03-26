@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 SQL Prep | Random Location</title>
+  <meta name="description" content="3 SQL Prep | Random Location" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 SQL Prep | Random Location" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 SQL Prep | Random Location" />
+  
+  
+  
+
+<meta name="author" content="Your Name" />
+
+
+<meta name="date" content="2025-01-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="polygons-imports.html"/>
+<link rel="next" href="query.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="polygons-imports.html"><a href="polygons-imports.html"><i class="fa fa-check"></i><b>2</b> Polygons Imports</a></li>
+<li class="chapter" data-level="3" data-path="sql-prep.html"><a href="sql-prep.html"><i class="fa fa-check"></i><b>3</b> SQL Prep</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="sql-prep.html"><a href="sql-prep.html#bounder"><i class="fa fa-check"></i><b>3.0.1</b> Bounder</a></li>
+<li class="chapter" data-level="3.1" data-path="sql-prep.html"><a href="sql-prep.html#wkt-geometry"><i class="fa fa-check"></i><b>3.1</b> WKT geometry</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="query.html"><a href="query.html"><i class="fa fa-check"></i><b>4</b> Query</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="query.html"><a href="query.html#leaflet-bounding-box-view-box-filters"><i class="fa fa-check"></i><b>4.0.1</b> Leaflet Bounding Box (View Box) Filters</a></li>
+<li class="chapter" data-level="4.0.2" data-path="query.html"><a href="query.html#engulfing-filter"><i class="fa fa-check"></i><b>4.0.2</b> Engulfing Filter</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="leaflet-example.html"><a href="leaflet-example.html"><i class="fa fa-check"></i><b>5</b> Leaflet Example</a></li>
+<li class="chapter" data-level="6" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>6</b> Set Up</a></li>
+<li class="chapter" data-level="7" data-path="example.html"><a href="example.html"><i class="fa fa-check"></i><b>7</b> Example</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="example.html"><a href="example.html#satellite"><i class="fa fa-check"></i><b>7.1</b> Satellite</a></li>
+<li class="chapter" data-level="7.2" data-path="example.html"><a href="example.html#street"><i class="fa fa-check"></i><b>7.2</b> Street</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Random Location</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sql-prep" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> SQL Prep<a href="sql-prep.html#sql-prep" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="bounder" class="section level3 hasAnchor" number="3.0.1">
+<h3><span class="header-section-number">3.0.1</span> Bounder<a href="sql-prep.html#bounder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The bounder gives us ready access to the bounding box of the polygons, as well its centre-point. Technically, the bounding box is created with the corners (eg, Bound_North by Bound_East is the North-East corner), but using bounding longitudinal and latitudinal lines allows for quicker filtering via basic dataframe functions, without interpreting a two-dimension coordinate.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="sql-prep.html#cb2-1" tabindex="-1"></a>bound_polygons <span class="ot">&lt;-</span> <span class="cf">function</span>(sf_object, <span class="at">geometry_column =</span> <span class="st">&quot;Geometry&quot;</span>) {</span>
+<span id="cb2-2"><a href="sql-prep.html#cb2-2" tabindex="-1"></a>  sf_object <span class="ot">&lt;-</span> sf_object <span class="sc">%&gt;%</span> <span class="fu">st_set_geometry</span>(geometry_column)</span>
+<span id="cb2-3"><a href="sql-prep.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="sql-prep.html#cb2-4" tabindex="-1"></a>  sf_object <span class="ot">&lt;-</span> sf_object <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="sql-prep.html#cb2-5" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb2-6"><a href="sql-prep.html#cb2-6" tabindex="-1"></a>      <span class="at">Bound_North =</span> <span class="fu">map_dbl</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column), <span class="sc">~</span> <span class="fu">st_bbox</span>(.x)[<span class="st">&quot;ymax&quot;</span>]),</span>
+<span id="cb2-7"><a href="sql-prep.html#cb2-7" tabindex="-1"></a>      <span class="at">Bound_South =</span> <span class="fu">map_dbl</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column), <span class="sc">~</span> <span class="fu">st_bbox</span>(.x)[<span class="st">&quot;ymin&quot;</span>]),</span>
+<span id="cb2-8"><a href="sql-prep.html#cb2-8" tabindex="-1"></a>      <span class="at">Bound_East =</span> <span class="fu">map_dbl</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column), <span class="sc">~</span> <span class="fu">st_bbox</span>(.x)[<span class="st">&quot;xmax&quot;</span>]),</span>
+<span id="cb2-9"><a href="sql-prep.html#cb2-9" tabindex="-1"></a>      <span class="at">Bound_West =</span> <span class="fu">map_dbl</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column), <span class="sc">~</span> <span class="fu">st_bbox</span>(.x)[<span class="st">&quot;xmin&quot;</span>]),</span>
+<span id="cb2-10"><a href="sql-prep.html#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="sql-prep.html#cb2-11" tabindex="-1"></a>      <span class="at">Centre_Lat =</span> <span class="fu">map_dbl</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column), <span class="sc">~</span> <span class="fu">st_coordinates</span>(<span class="fu">st_centroid</span>(.x))[<span class="dv">2</span>]),</span>
+<span id="cb2-12"><a href="sql-prep.html#cb2-12" tabindex="-1"></a>      <span class="at">Centre_Lng =</span> <span class="fu">map_dbl</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column), <span class="sc">~</span> <span class="fu">st_coordinates</span>(<span class="fu">st_centroid</span>(.x))[<span class="dv">1</span>])</span>
+<span id="cb2-13"><a href="sql-prep.html#cb2-13" tabindex="-1"></a>    )</span>
+<span id="cb2-14"><a href="sql-prep.html#cb2-14" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="sql-prep.html#cb2-15" tabindex="-1"></a>  <span class="fu">return</span>(sf_object)</span>
+<span id="cb2-16"><a href="sql-prep.html#cb2-16" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="wkt-geometry" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> WKT geometry<a href="sql-prep.html#wkt-geometry" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Well-known-text allows to save and read the geometry (series of coordinates creating nodes and lines) in a simple dataframe without necessarily interpreting, saving, downloading as geodata.</p>
+<p>WKT_polygons <strong>creates</strong> WKT geodata. To read WKT, use read_polygons which has a built-in check for WKT-data input</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="sql-prep.html#cb3-1" tabindex="-1"></a>WKT_polygons <span class="ot">&lt;-</span> <span class="cf">function</span>(sf_object, <span class="at">geometry_column =</span> <span class="st">&quot;Geometry&quot;</span>) {</span>
+<span id="cb3-2"><a href="sql-prep.html#cb3-2" tabindex="-1"></a>  sf_object <span class="ot">&lt;-</span> sf_object <span class="sc">%&gt;%</span> <span class="fu">st_set_geometry</span>(geometry_column)</span>
+<span id="cb3-3"><a href="sql-prep.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="sql-prep.html#cb3-4" tabindex="-1"></a>  sf_object <span class="ot">&lt;-</span> sf_object <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="sql-prep.html#cb3-5" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb3-6"><a href="sql-prep.html#cb3-6" tabindex="-1"></a>      <span class="at">Geometry_WKT =</span> <span class="fu">st_as_text</span>(<span class="sc">!!</span><span class="fu">sym</span>(geometry_column))</span>
+<span id="cb3-7"><a href="sql-prep.html#cb3-7" tabindex="-1"></a>    )</span>
+<span id="cb3-8"><a href="sql-prep.html#cb3-8" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="sql-prep.html#cb3-9" tabindex="-1"></a>  <span class="fu">return</span>(sf_object)</span>
+<span id="cb3-10"><a href="sql-prep.html#cb3-10" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="polygons-imports.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="query.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

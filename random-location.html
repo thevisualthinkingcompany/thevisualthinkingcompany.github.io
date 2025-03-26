@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Random Location</title>
-  <meta name="description" content="Random Location" />
+  <title>3 Random Location | Random Location</title>
+  <meta name="description" content="3 Random Location | Random Location" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Random Location" />
+  <meta property="og:title" content="3 Random Location | Random Location" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Random Location" />
+  <meta name="twitter:title" content="3 Random Location | Random Location" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="polygon-processing.html"/>
 
-<link rel="next" href="polygon-processing.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -189,23 +189,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Random Location</h1>
-<p class="author"><em>Your Name</em></p>
-<p class="date"><em>2025-01-28</em></p>
+<div id="random-location" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Random Location<a href="random-location.html#random-location" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="set-up" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Set Up<a href="random-location.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="random-location.html#cb11-1" tabindex="-1"></a><span class="co"># Load the leaflet library</span></span>
+<span id="cb11-2"><a href="random-location.html#cb11-2" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb11-3"><a href="random-location.html#cb11-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="introduction" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Lorem ipsem dolor est…</p>
+<div id="example" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Example<a href="random-location.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="satellite" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Satellite<a href="random-location.html#satellite" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="random-location.html#cb12-1" tabindex="-1"></a>random_lat <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="fl">48.3</span>, <span class="at">max =</span> <span class="fl">60.0</span>)</span>
+<span id="cb12-2"><a href="random-location.html#cb12-2" tabindex="-1"></a>random_lng <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="sc">-</span><span class="fl">139.0</span>, <span class="at">max =</span> <span class="sc">-</span><span class="fl">114.0</span>)</span>
+<span id="cb12-3"><a href="random-location.html#cb12-3" tabindex="-1"></a>random_zoom <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="dv">8</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb12-4"><a href="random-location.html#cb12-4" tabindex="-1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="random-location.html#cb12-5" tabindex="-1"></a>  </span>
+<span id="cb12-6"><a href="random-location.html#cb12-6" tabindex="-1"></a> <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Esri.WorldImagery) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-7"><a href="random-location.html#cb12-7" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> random_lng, <span class="at">lat =</span> random_lat, <span class="at">zoom =</span> random_zoom) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="random-location.html#cb12-8" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> random_lng, <span class="at">lat =</span> random_lat, <span class="at">popup =</span> <span class="st">&quot;Random Location in BC&quot;</span>)</span></code></pre></div>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-d92a2929f760fab89c18" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d92a2929f760fab89c18">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[59.21649928994011,-115.8588812847156,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Random Location in BC",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[59.21649928994011,-115.8588812847156],9.468188602011651,[]],"limits":{"lat":[59.21649928994011,59.21649928994011],"lng":[-115.8588812847156,-115.8588812847156]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="street" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Street<a href="random-location.html#street" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="random-location.html#cb13-1" tabindex="-1"></a>random_lat <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="fl">48.3</span>, <span class="at">max =</span> <span class="fl">60.0</span>)</span>
+<span id="cb13-2"><a href="random-location.html#cb13-2" tabindex="-1"></a>random_lng <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="sc">-</span><span class="fl">139.0</span>, <span class="at">max =</span> <span class="sc">-</span><span class="fl">114.0</span>)</span>
+<span id="cb13-3"><a href="random-location.html#cb13-3" tabindex="-1"></a>random_zoom <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="dv">8</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb13-4"><a href="random-location.html#cb13-4" tabindex="-1"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="random-location.html#cb13-5" tabindex="-1"></a>  </span>
+<span id="cb13-6"><a href="random-location.html#cb13-6" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-7"><a href="random-location.html#cb13-7" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> random_lng, <span class="at">lat =</span> random_lat, <span class="at">zoom =</span> random_zoom) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="random-location.html#cb13-8" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> random_lng, <span class="at">lat =</span> random_lat, <span class="at">popup =</span> <span class="st">&quot;Random Location in BC&quot;</span>)</span></code></pre></div>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-72be1f50ed0d6e05f7ae" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-72be1f50ed0d6e05f7ae">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[52.1969422060065,-126.1234167541843,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Random Location in BC",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[52.1969422060065,-126.1234167541843],9.487949292641133,[]],"limits":{"lat":[52.1969422060065,52.1969422060065],"lng":[-126.1234167541843,-126.1234167541843]}},"evals":[],"jsHooks":[]}</script>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="polygon-processing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="polygon-processing.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
